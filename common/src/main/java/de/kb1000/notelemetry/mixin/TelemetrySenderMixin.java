@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Pseudo
 @Mixin(targets = "net.minecraft.client.util.telemetry.TelemetrySender")
@@ -20,16 +21,16 @@ public class TelemetrySenderMixin {
     private boolean disableTelemetrySession() {
         return TelemetryConfig.instance.getTelemetryOption() == TelemetryOptions.OFF;
     }
-
+    
     @Redirect(method = "<init>", at = @At(value = "INVOKE", target = "Lcom/mojang/authlib/minecraft/TelemetryPropertyContainer;addProperty(Ljava/lang/String;Ljava/lang/String;)V", ordinal = 0))
     private void anonymizeId(TelemetryPropertyContainer instance, String key, String value) {
         if (TelemetryConfig.instance.getTelemetryOption() != TelemetryOptions.FULL) {
-            instance.addNullProperty(key);
+            instance.addProperty(key, new UUID(0, 0).toString());
         } else {
             instance.addProperty(key, value);
         }
     }
-
+    
     /**
      * @author IMS
      */
