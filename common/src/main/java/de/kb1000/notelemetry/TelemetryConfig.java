@@ -101,7 +101,7 @@ public class TelemetryConfig {
         Properties properties = new Properties();
         // NB: This uses ISO-8859-1 with unicode escapes as the encoding
         properties.load(Files.newInputStream(propertiesPath));
-        telemetryOption = TelemetryOptions.fromId(Integer.parseInt(properties.getProperty("shaderPack")));
+        telemetryOption = TelemetryOptions.fromId(Integer.parseInt(properties.getProperty("telemetryOption")));
     }
 
     /**
