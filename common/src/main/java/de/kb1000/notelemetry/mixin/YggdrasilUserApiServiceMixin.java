@@ -16,8 +16,6 @@ import java.util.concurrent.Executor;
 
 @Mixin(YggdrasilUserApiService.class)
 public class YggdrasilUserApiServiceMixin {
-    @Shadow @Final private MinecraftClient minecraftClient;
-
     /**
      * @author kb1000
      */
