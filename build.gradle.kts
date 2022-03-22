@@ -1,6 +1,6 @@
 plugins {
-	id("fabric-loom") version "0.10-SNAPSHOT"
-	id("io.github.juuxel.loom-quiltflower-mini") version "1.2.1"
+	id("fabric-loom") version "0.11-SNAPSHOT"
+	id("io.github.juuxel.loom-quiltflower") version "1.6.1"
 	id("maven-publish")
 }
 
@@ -25,6 +25,7 @@ val maven_group: String by project.ext
 val minecraft_version: String by project.ext
 val yarn_mappings: String by project.ext
 val loader_version: String by project.ext
+val fabric_version: String by project.ext
 val forge_version: String by project.ext
 
 base.archivesName.set(archives_base_name)
@@ -80,6 +81,13 @@ tasks.jar {
 			"Implementation-Version" to project.version
 		)
 	}
+}
+
+fun includeFabricApiModule(moduleName:String) {
+	var dependency = fabricApi.module(moduleName, fabric_version)
+
+	dependencies.modImplementation(dependency)
+	dependencies.include(dependency)
 }
 
 // configure the maven publication

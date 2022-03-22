@@ -6,12 +6,12 @@ license = "CC0"
 [[mods]]
 modId = "no_telemetry"
 version = "${file.jarVersion}"
-displayName = "No Telemetry"
-description = "Disable the telemetry introduced in 21w38a"
+displayName = "No Telemetry Plus"
+description = "Disable or anonymize the telemetry introduced in 21w38a"
 logoFile = "no-telemetry-icon.png"
 logoBlur = false
-authors = "kb1000"
-displayURL = "https://github.com/kb-1000/no-telemetry"
+authors = "kb1000, IMS"
+displayURL = "https://github.com/IMS212/no-telemetry-plus"
 
 [[no-telemetry.dependencies]]
 modId = "minecraft"

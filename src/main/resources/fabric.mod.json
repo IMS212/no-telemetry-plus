@@ -2,20 +2,24 @@
     "schemaVersion": 1,
     "id": "no-telemetry",
     "version": "${version}",
-    "name": "No Telemetry",
-    "description": "Disable the telemetry introduced in 21w38a",
+    "name": "No Telemetry Plus",
+    "description": "Disable or anonymize the telemetry introduced in 21w38a",
     "icon": "no-telemetry-icon.png",
     "authors": [
-        "kb1000"
+        "kb1000",
+        "IMS"
     ],
     "contact": {
-        "homepage": "https://github.com/kb-1000/no-telemetry",
-        "sources": "https://github.com/kb-1000/no-telemetry",
-        "issues": "https://github.com/kb-1000/no-telemetry/issues"
+        "homepage": "https://github.com/IMS212/no-telemetry-plus",
+        "sources": "https://github.com/IMS212/no-telemetry-plus",
+        "issues": "https://github.com/IMS212/no-telemetry-plus/issues"
     },
     "license": "CC0-1.0",
     "environment": "client",
     "entrypoints": {
+        "client": [
+            "de.kb1000.notelemetry.NoTelemetryFabricMod"
+        ],
         "preLaunch": [
             "de.kb1000.notelemetry.NoTelemetryPreLaunch"
         ]

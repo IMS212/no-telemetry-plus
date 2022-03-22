@@ -7,6 +7,7 @@
     "client": [
         "NewYggdrasilUserApiServiceMixin",
         "TelemetrySenderMixin",
+        "MixinAccessibilitySettings",
         "YggdrasilUserApiServiceMixin"
     ],
     "injectors": {
