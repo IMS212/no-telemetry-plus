@@ -49,7 +49,9 @@ public class TelemetryConfig {
     public void initialize() throws IOException {
         load();
         if (!Files.exists(propertiesPath)) {
-            Files.createDirectory(propertiesPath.getParent());
+            if (!Files.exists(propertiesPath.getParent())) {
+                Files.createDirectory(propertiesPath.getParent());
+            }
             save();
         }
     }

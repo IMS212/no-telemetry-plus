@@ -1,6 +1,8 @@
 package de.kb1000.notelemetry;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
+import net.minecraft.client.MinecraftClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,6 +28,8 @@ public class NoTelemetryPreLaunch implements PreLaunchEntrypoint {
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | NoSuchElementException e) {
             LOGGER.warn("Failed to add authlib to knot", e);
         }
+
+        TelemetryConfig.createInstance(FabricLoader.getInstance().getConfigDir().resolve("telemetry.config"));
 
         LOGGER.info("Killing telemetry");
     }
