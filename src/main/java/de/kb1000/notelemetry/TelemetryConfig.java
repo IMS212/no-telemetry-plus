@@ -1,12 +1,17 @@
 package de.kb1000.notelemetry;
 
+import net.minecraft.client.gui.widget.CyclingButtonWidget;
 import net.minecraft.client.option.CyclingOption;
 import net.minecraft.client.render.ChunkBuilderMode;
+import net.minecraft.text.LiteralText;
+import net.minecraft.text.OrderedText;
 import net.minecraft.text.TranslatableText;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 /**
  * A class dedicated to storing the config values of telemetry.
@@ -61,7 +66,19 @@ public class TelemetryConfig {
             TelemetryOptions::getText,
             gameOptions -> instance.getTelemetryOption(),
             (gameOptions, option, telemetry) -> instance.setTelemetryOption(telemetry)
-    );
+    ).tooltip(minecraftClient -> {
+        return new CyclingButtonWidget.TooltipFactory<TelemetryOptions>() {
+            @Override
+            public List<OrderedText> apply(TelemetryOptions telemetryOptions) {
+                ArrayList<OrderedText> list = new ArrayList<>();
+                list.add(new LiteralText("Mojang sends telemetry info containing your XUID by default.").asOrderedText());
+                list.add(new LiteralText("The \"Anonymous\" option removes your XUID and Client ID.").asOrderedText());
+                list.add(new LiteralText("The \"Off\" option blocks all telemetry.").asOrderedText());
+                list.add(new LiteralText("This may require a restart to take effect.").asOrderedText());
+                return list;
+            }
+        };
+    });
 
     /**
      * loads the config file and then populates the string, int, and boolean entries with the parsed entries
