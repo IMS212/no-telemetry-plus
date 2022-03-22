@@ -30,7 +30,12 @@ processResources {
         expand "version": project.version
     }
 }
+def includeFabricApiModule(String moduleName) {
+    Object dependency = fabricApi.module(moduleName, project.fabric_version)
 
+    dependencies.modImplementation(dependency)
+    dependencies.include(dependency)
+}
 shadowJar {
     exclude "architectury.common.json"
 

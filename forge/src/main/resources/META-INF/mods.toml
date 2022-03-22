@@ -5,7 +5,7 @@ license = "CC0"
 
 [[mods]]
 modId = "no_telemetry"
-version = "${file.jarVersion}"
+version = "${version}"
 displayName = "No Telemetry Plus"
 description = "Disable or anonymize the telemetry introduced in 21w38a"
 logoFile = "no-telemetry-icon.png"
